@@ -1,0 +1,7 @@
+<main *ngIf="!loading"
+    class="flex flex-col w-full h-screen bg-gray-900 select-none overflow-hidden
+        bg-circuit-board border-x border-x-gray-700">
+    <div id="profile" class="flex items-center justify-between px-2 py-2 bg-gray-800 shadow-md">
+        <img class="w-12 h-12 cursor-pointer aspect-square rounded-full" src="{{ apiURL }}/{{ chat.image }}" alt="">
+    </div>
+</main>

@@ -1,0 +1,58 @@
+<main class="flex w-full h-screen bg-gray-900
+    select-none px-32 bg-wiggle overflow-hidden">
+    <!-- Chats & Profile -->
+    <section id="chats-n-profile" class="max-w-xs w-full flex flex-col">
+        <div id="profile" class="flex items-center justify-between px-2 py-2 bg-gray-800 shadow-md">
+            <img class="w-12 h-12 cursor-pointer aspect-square rounded-full" src="{{ apiURL }}/{{ user.profile_picture }}" alt="">
+            <div class="flex items-center pr-2 text-slate-400">
+                <icon (click)="openGroupModal()" class="w-6 h-6 mr-2 hover:text-slate-200 cursor-pointer" name="chat_bubble_bottom_center_outline"></icon>
+                <icon class="w-6 h-6 ml-2 hover:text-slate-200 cursor-pointer" name="cog_6_tooth_outline"></icon>
+            </div>
+        </div>
+        <div *ngIf="chats.length > 0; else NoChats" id="chats" class="h-full bg-gray-900">
+            <section class="flex flex-col px-2 my-2 mx-4 bg-gray-900 group
+                transition-all" (click)="openChat(chat.id)" *ngFor="let chat of chats">
+                <!---->
+                <div class="flex items-center group-hover:bg-gray-800 cursor-pointer">
+                    <img class="w-10 h-10 aspect-square rounded-full border-2 border-gray-800" src="{{ apiURL }}/{{ chat.image }}" alt="">
+                    <div class="flex flex-col justify-between ml-2 h-14 w-full">
+                        <div class="w-full h-[1px] self-center bg-gray-800"></div>
+                        <div class="mx-2 flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-200">{{ chat.name }}</span>
+                                <div class="flex items-center text-gray-400 text-sm font-thin">
+                                    <!--
+                                    <icon *ngIf="chat.readed; else NotReaded" class="h-3 w-3 text-blue-400" name="double_check_outline"></icon>
+                                    -->
+                                    <svg class="h-4 w-4 text-blue-400" *ngIf="chat.readed; else NotReaded" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 17l5 5l12-12m-5 10l2 2l12-12"/></svg>
+                                    <ng-template #NotReaded>
+                                        <icon class="h-3 w-3 text-gray-400" name="check_outline"></icon>
+                                    </ng-template>
+                                    <p class="ml-1">{{ chat.last_message }}</p>
+                                </div>
+                            </div>
+                            <div *ngIf="!chat.readed" class="h-4 w-4 rounded-full bg-green-500"></div>
+                        </div>
+                        <div class="w-full h-[1px] self-center bg-gray-800"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <ng-template #NoChats>
+            <div id="chats" class="flex flex-col items-center justify-center w-full h-full bg-gray-900">
+                <span class="text-gray-100 text-lg font-semibold">No existen Chats</span>
+                <div class="flex flex-col items-start w-8/12 text-gray-400 text-sm my-2">
+                    <div (click)="openGroupModal()" class="flex items-center w-full my-2 py-2 px-4 cursor-pointer
+                    hover:text-gray-100 hover:bg-gray-800 rounded-md">
+                        <icon class="w-6 h-6" name="chat_bubble_left_outline"></icon>
+                        <span class="ml-2">Iniciar chat</span>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </section>
+    <!-- Chat & Messages -->
+    <section id="chat-n-msg" class="max-w-xl w-full flex flex-col">
+        <chat *ngIf="activeChat" [activeChat]="activeChat"></chat>
+    </section>
+</main>

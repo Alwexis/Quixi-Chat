@@ -1,0 +1,13 @@
+:host ::ng-deep svg {
+    width: inherit;
+    height: inherit;
+}
+:host ::ng-deep path {
+    stroke: currentColor;
+}
+:host ::ng-deep path.no-stroke, :host ::ng-deep g.no-stroke {
+    stroke: none;
+}
+:host ::ng-deep path.no-fill, :host ::ng-deep g.no-fill {
+    fill: none;
+}

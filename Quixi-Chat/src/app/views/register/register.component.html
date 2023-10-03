@@ -1,0 +1,83 @@
+<alert (onClose)="cannotRegister = false;" *ngIf="cannotRegister" type="danger" title="¡Error en el registro!" [messages]="['Ha ocurrido un error en su registro, por favor revise las credenciales.']"></alert>
+
+<main class="flex flex-col items-center h-screen bg-gray-900
+    bg-wiggle select-none">
+    <svg class="mt-6 mx-6 w-16 h-16 self-start fill-current text-gray-50" width="36" height="32" viewBox="0 0 36 32" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5.22.16C4 .74 3.8 2.54 4.5 6.82l.26 1.63-.24.85c-.23.78-.24.97-.23 2.29 0 1.34.01 1.5.24 2.18a8.95 8.95 0 0 0 2.22 3.62c.75.8.94 1.14.94 1.74 0 .67-.94 2.1-2.16 3.3-.97.95-1.06 1.18-.65 1.59.2.2.26.21.8.16a10.9 10.9 0 0 0 4.47-1.48c.26-.16.76-.57 1.12-.9.36-.34.79-.66.96-.71.38-.13 1.06-.08 2.32.17 1.22.24 3.75.33 5.06.19 3.64-.42 6.7-1.79 8.86-3.97.98-1 1.46-1.66 1.95-2.72.54-1.16.7-1.9.7-3.21 0-.97-.03-1.26-.23-1.97-.28-1.04-.28-1.32-.01-2.94.56-3.43.48-5.2-.27-6.1-.76-.92-2.51-.64-5.82.94-1.74.84-1.72.83-3.2.5a15.5 15.5 0 0 0-3.97-.41c-1.53 0-2.8.14-4.03.43-1.28.3-1.34.3-3.05-.52C7.79.18 6.08-.25 5.22.16ZM7.78 1c.5.17 1.56.62 2.37 1 2.04.94 2.01.94 4.19.47 1.11-.24 1.27-.26 3.32-.26 2.09 0 2.2.01 3.33.26.8.19 1.39.27 1.9.27l.73-.01 1.51-.7C27.72.8 29.22.4 29.9.75c.78.42.88 2.38.29 5.9-.25 1.5-.26 2.02-.04 2.75 1.4 4.53-1.94 9.13-7.83 10.8-1.82.51-2.29.58-4.65.57-2 0-2.24-.02-3.28-.24-1.95-.41-2.4-.32-3.52.7a7.95 7.95 0 0 1-3.03 1.78 9.6 9.6 0 0 1-2.46.55c-.02-.02.32-.43.77-.9a9.36 9.36 0 0 0 1.9-2.57c.25-.55.27-.65.23-1.23a3.22 3.22 0 0 0-.2-.92 9.7 9.7 0 0 0-.95-1.16 7.7 7.7 0 0 1-2.2-4.1 8.15 8.15 0 0 1 .2-3.19c.29-.92.29-1.09.03-2.63a18.73 18.73 0 0 1-.38-4.18c.04-1.25.21-1.73.7-1.96.41-.2 1.27-.09 2.31.28Zm0 0"/><path d="M12.54 6.63a1.56 1.56 0 0 0-.37 2.53c1.01 1.02 2.69.3 2.69-1.16a1.58 1.58 0 0 0-2.32-1.37Zm1.6.36c.07.06.11.18.11.29 0 .38-.52.54-.7.22-.1-.23-.1-.32.06-.48.16-.16.39-.18.54-.03ZM21.55 6.6a1.6 1.6 0 0 0-.78 2.05c.2.5.95 1.02 1.47 1.02s1.28-.52 1.48-1.02c.22-.53.1-1.28-.3-1.7-.41-.47-1.33-.64-1.87-.35Zm1.58.39c.06.06.1.18.1.29 0 .1-.04.22-.1.28a.44.44 0 0 1-.57 0 .44.44 0 0 1-.1-.28c0-.1.04-.23.1-.3.06-.05.18-.1.28-.1.1 0 .23.05.29.1ZM16.55 10.97c-.87.19-.82 1.02.1 1.67.15.1.28.22.28.26 0 .03-.24.17-.54.31-.39.18-.71.25-1.14.28-.8.05-.96-.07-.96-.65 0-.73-.47-.73-.61.02-.07.44.16.87.63 1.1.33.15.49.18 1.03.13.52-.03.79-.12 1.48-.45l.84-.4.85.4c.68.33.97.42 1.48.45 1.15.09 1.82-.44 1.63-1.31-.15-.7-.69-.62-.58.08.04.32.03.39-.15.5-.34.24-1.1.2-1.84-.12-.36-.16-.65-.3-.65-.34 0-.03.17-.19.39-.35.4-.3.67-.76.63-1.07a.75.75 0 0 0-.26-.35c-.2-.15-.39-.18-1.25-.2-.57-.02-1.18 0-1.36.04ZM7.86 11.28c0 .26.17.31 1.12.31.41 0 1.25.06 1.86.13 2.15.25 2.17.25 2.23.1.09-.22-.16-.38-.7-.44a39.2 39.2 0 0 0-3.7-.31c-.8 0-.81 0-.81.2ZM25.35 11.13l-1.51.16c-1.53.16-1.55.17-1.55.44 0 .25-.1.25 1.8.04.84-.1 1.85-.18 2.25-.18.95 0 1.12-.05 1.12-.31 0-.21 0-.21-.92-.2-.52 0-1.04.03-1.19.05ZM11.53 12.7c-1.07.05-3.24.3-3.46.37-.17.06-.22.14-.2.29.03.22-.07.22 1.67.03.67-.07 1.7-.16 2.3-.2 1.15-.06 1.34-.12 1.2-.39-.1-.17-.15-.17-1.5-.1ZM22.32 12.76c-.12.32 0 .37 1.15.44.6.02 1.65.1 2.31.19 1.75.19 1.64.19 1.67-.03.03-.15-.03-.23-.18-.28-.24-.1-2.43-.32-3.88-.4-.89-.05-1.03-.04-1.07.08ZM11.14 14.16c-.88.25-1.86.58-2.2.71-.52.22-.6.29-.6.47 0 .29.08.28 1.6-.25.69-.23 1.68-.54 2.2-.67.99-.25 1.22-.37 1.14-.6-.1-.22-.43-.16-2.14.34ZM22.05 13.82c-.09.23.15.34 1.26.64.59.15 1.58.46 2.2.68 1.35.47 1.47.48 1.5.22.04-.22-.12-.3-1.23-.7-1.03-.37-3.2-.98-3.47-.98-.11 0-.22.06-.26.14ZM1.31 28.18c-1.68.64-1.6 3.06.14 3.55.31.09.5.09.9 0 .45-.1.54-.09.67.03.2.19.28.17.57-.13l.25-.26-.19-.19c-.17-.16-.17-.2-.08-.41.44-.85.1-1.97-.72-2.44a2.17 2.17 0 0 0-1.54-.15Zm1.3 1.07c.26.25.37.61.28.91-.05.17-.07.17-.2.04-.21-.19-.29-.17-.57.13-.2.2-.23.28-.15.36.26.26-.07.34-.5.11a.9.9 0 0 1-.52-.85c0-.43.11-.63.46-.85a.97.97 0 0 1 1.2.15ZM5.24 28.11c-.03.04-.06.65-.06 1.36 0 1.12.03 1.35.18 1.63.24.48.8.75 1.4.67.5-.05.8-.23 1.08-.66.18-.28.2-.36.18-1.65l-.03-1.35H7.2l-.04 1.33c-.04 1.43-.07 1.5-.53 1.5a.8.8 0 0 1-.41-.15c-.17-.15-.18-.26-.2-1.42L6 28.1l-.34-.03c-.2-.02-.38 0-.42.03ZM9.48 28.12c-.04.03-.07.86-.07 1.83v1.77h.87v-3.66H9.9c-.21 0-.41.03-.43.06ZM11.6 28.2c.03.08.28.47.54.87.25.4.47.78.47.84 0 .07-.23.48-.52.92-.28.45-.52.83-.52.86a2 2 0 0 0 .5.03h.5l.32-.52c.18-.29.36-.52.4-.52.05 0 .23.23.4.52l.35.52h1l-.12-.2-.58-.91-.44-.7.56-.86c.3-.48.54-.89.52-.92-.03-.04-.24-.07-.48-.07h-.42l-.37.57c-.2.3-.39.57-.42.57-.03 0-.21-.26-.41-.57l-.35-.57h-.5c-.4 0-.46.02-.42.14ZM16.32 29.88v1.84h.87l-.02-1.81-.03-1.8-.4-.03-.42-.03ZM21.8 28.2a2.1 2.1 0 0 0-1.15 1.34 1.9 1.9 0 0 0 1.8 2.27c.55 0 1.56-.6 1.56-.93 0-.06-.15-.2-.33-.28-.33-.18-.34-.18-.49-.02a.98.98 0 0 1-1.48 0c-.51-.55-.2-1.47.56-1.61.28-.06.6.05.98.33.11.09.2.07.45-.06.18-.1.31-.22.31-.27 0-.18-.66-.7-1.03-.8a1.71 1.71 0 0 0-1.17.02ZM25.28 28.11c-.03.04-.06.87-.06 1.84v1.77h.85l.03-.72.03-.71.71-.03.71-.03v1.5h.87l-.02-1.82-.02-1.8h-.78l-.03.62-.03.64H26.1l-.02-.64-.03-.62-.34-.03c-.2-.02-.38 0-.42.03ZM30.8 28.14c-.08.12-1.26 3.41-1.26 3.5 0 .05.19.08.41.08.4 0 .43-.02.57-.3l.14-.31h1.22l.13.3c.12.3.15.31.55.31.24 0 .44-.03.44-.07 0-.03-.29-.85-.64-1.8l-.63-1.74-.44-.03c-.24-.02-.46 0-.49.06Zm.62 1.66c.14.45.14.44-.15.44-.14 0-.26-.04-.26-.1 0-.16.2-.68.26-.68.03 0 .1.14.15.34ZM33.4 28.11c-.03.04-.06.24-.06.44v.37l.46.03.45.03.02 1.36.03 1.38h.76l.03-1.38.02-1.36.46-.03.46-.03-.03-.4-.03-.41-1.26-.03c-.69-.01-1.28 0-1.31.03Zm0 0"/>
+    </svg>
+    <section class="formulario-container flex flex-col items-center">
+        <h2 class="font-serif text-4xl font-semibold text-gray-50">Registrarse</h2>
+        <!--
+        <p class=" m-4 text-base max-w-xl text-center text-gray-800 dark:text-gray-300">Regístrate en MyPyme utilizando tu correo electrónico y una contraseña, ¡o elige entre los diversos métodos que se enumeran a abajo!</p>
+        -->
+        <form #registerForm="ngForm" class="space-y-2 m-4 max-w-2xl min-w-full" (submit)="register()">
+            <div class="max-w-full min-w-full">
+                <label for="username" class="block text-sm font-medium leading-6 text-gray-300">Nombre de Usuario</label>
+                <div class="border mt-1 flex items-center bg-slate-50 rounded-md
+                {{username.errors?.['pattern'] ? 'border-red-400 text-red-400 animate-shake animate-once' : 'border-gray-300 text-gray-800'}}">
+                    <icon name="user_outline" class="w-5 h-5 ml-2"></icon>
+                    <input [(ngModel)]="credentials.username" #username="ngModel" name="username"
+                  placeholder="Pepito123" required pattern="[a-zA-Z_.]{4,}"
+                  class="block w-full rounded-md border-0 py-1.5 px-2 bg-slate-50
+                  font-mono ring-0 ring-transparent  placeholder:text-gray-400 focus:ring-0
+                  focus:ring-transparent sm:text-sm sm:leading-6">
+                    <icon *ngIf="username.errors?.['pattern']" name="exclamation_circle_outline" class="w-4 h-4 ml-2 mr-2"></icon>
+                </div>
+                <div *ngIf="username.errors?.['pattern']" class="mt-2 flex flex-col text-xs  font-extralight text-red-400">
+                    <span class="max-w-full">Utiliza un nombre de usuario válido!</span>
+                </div>
+            </div>
+            <div class="max-w-full min-w-full">
+                <label for="alias" class="block text-sm font-medium leading-6 text-gray-300">Alias</label>
+                <div class="border mt-1 flex items-center bg-slate-50 rounded-md
+                {{alias.errors?.['pattern'] ? 'border-red-400 text-red-400 animate-shake animate-once' : 'border-gray-300 text-gray-800'}}">
+                    <icon name="identification_outline" class="w-5 h-5 ml-2"></icon>
+                    <input [(ngModel)]="credentials.alias" #alias="ngModel" name="alias"
+                  placeholder="Pepito Pro Gamer" required
+                  pattern="[a-zA-Z_. ]{4,}"
+                  class="block w-full rounded-md border-0 py-1.5 px-2 bg-slate-50
+                  font-mono ring-0 ring-transparent  placeholder:text-gray-400 focus:ring-0
+                  focus:ring-transparent sm:text-sm sm:leading-6">
+                    <icon *ngIf="alias.errors?.['pattern']" name="exclamation_circle_outline" class="w-4 h-4 ml-2 mr-2"></icon>
+                </div>
+                <div *ngIf="alias.errors?.['pattern']" class="mt-2 flex flex-col text-xs  font-extralight text-red-400">
+                    <span class="max-w-full">Utiliza un alias válido!</span>
+                </div>
+            </div>
+            <div class="max-w-full min-w-full">
+                <label for="password" class="block text-sm font-medium leading-6 text-gray-300">Contraseña</label>
+                <div class="border border-gray-300 text-gray-800 mt-1 flex items-center bg-slate-50 rounded-md">
+                    <icon name="key_outline" class="w-5 h-5 ml-2"></icon>
+                  <input [(ngModel)]="credentials.password" #password name="password"
+                  placeholder="******" type="password" required minlength="5"
+                  class="block w-full rounded-md border-0 py-1.5 px-2 bg-slate-50
+                  font-mono ring-0 ring-transparent  placeholder:text-gray-400 focus:ring-0
+                  focus:ring-transparent sm:text-sm sm:leading-6">
+                  <icon name="eye_outline" (click)="password.type = 'text'" *ngIf="password.type == 'password'; else seeingPwd" class="w-6 h-6 ml-2 mr-2 hover:cursor-pointer"></icon>
+                  <ng-template #seeingPwd>
+                    <icon name="eye_slash_outline" (click)="password.type = 'password'" class="w-6 h-6 ml-2 mr-2 hover:cursor-pointer"></icon>
+                  </ng-template>
+                </div>
+            </div>
+            <div class="max-w-full min-w-full">
+                <input (input)="changeImage($event)" #PfpInput class="hidden" name="pfp" type="file" accept="image/jpeg, image/png, image/jpg">
+                <div *ngIf="credentials.profile_picture == ''; else ConPfp" (click)="PfpInput.click()" class="border py-2 border-gray-300 text-gray-800 mt-1 flex items-center bg-slate-50 rounded-md cursor-pointer">
+                    <icon name="photo_outline" class="w-5 h-5 ml-2"></icon>
+                    <span class="ml-2">Foto de Perfil</span>
+                </div>
+                <ng-template #ConPfp>
+                    <div class="border py-2 px-2 mt-1 flex items-center rounded-md">
+                        <img class="h-16 w-16 rounded-md" src="{{ credentials.profile_picture }}" alt="">
+                        <span (click)="clearImg()" class="ml-2 rounded-md text-red-400 px-4 py-2 hover:text-gray-50 hover:bg-red-400 transition-all cursor-pointer">Eliminar foto de Perfil</span>
+                    </div>
+                </ng-template>
+            </div>
+            <div class="max-w-full min-w-full">
+                <button [disabled]="!registerForm.valid" type="submit" class="flex mt-6 w-full justify-center rounded-md bg-indigo-600 disabled:bg-indigo-500 disabled:cursor-not-allowed px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Registrarse</button>
+            </div>
+        </form>
+        <div class="text-gray-300">
+            <span>¿Ya tienes una cuenta? <a routerLink="/login" target="_self" class="decoration-transparent text-indigo-600">Inicia sesión</a></span>
+        </div>
+    </section>
+</main>

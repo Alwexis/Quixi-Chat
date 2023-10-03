@@ -1,0 +1,77 @@
+<main
+    class="flex items-center justify-center w-full h-screen absolute z-50 top-0
+    bg-black bg-opacity-70 select-none overflow-hidden">
+    <!-- Create Chat -->
+    <section class="bg-gray-800 max-w-xl p-8 rounded-md shadow-md">
+        <div class="flex items-center justify-center relative">
+            <span class="text-xl font-semibold text-gray-100">Crear Chat</span>
+            <icon (click)="onCancel.emit()" class="w-6 h-6 absolute right-0 cursor-pointer text-gray-400 hover:text-gray-100" name="x_mark_outline"></icon>
+        </div>
+        <div class="flex w-full mt-4">
+            <section class="w-1/2 mr-2">
+                <div class="text-gray-300">
+                    <label for="name">Nombre del Chat</label>
+                        <input [(ngModel)]="chatInfo.name" type="text" name="name" placeholder="Chat con ..."
+                            class="w-full h-10 px-3 rounded-lg bg-gray-900 border border-gray-600
+                            outline-none focus:shadow-outline">
+                    <span class="text-gray-400 text-sm font-thin">Si es que es un chat con un miembro, no se aplicará.</span>
+                </div>
+                <div class="max-w-full min-w-full mt-2 text-gray-100">
+                    <input (input)="changeImage($event)" #ChatImg class="hidden" name="pfp" type="file" accept="image/jpeg, image/png, image/jpg">
+                    <div *ngIf="chatInfo.image == ''; else ConPfp" (click)="ChatImg.click()"
+                        class="border py-2 bg-gray-900 border-gray-600 mt-1 flex items-center rounded-md
+                            cursor-pointer">
+                        <icon name="photo_outline" class="w-5 h-5 ml-2"></icon>
+                        <span class="ml-2">Foto del Chat</span>
+                    </div>
+                    <ng-template #ConPfp>
+                        <div class="border bg-gray-900 border-gray-600 py-2 px-2 mt-1 flex items-center rounded-md">
+                            <img class="h-16 w-16 rounded-md" src="{{ chatInfo.image }}" alt="">
+                            <span (click)="clearImage()" class="ml-2 rounded-md text-red-400 px-4 py-2 hover:text-gray-50 hover:bg-red-400 transition-all cursor-pointer">Eliminar foto</span>
+                        </div>
+                    </ng-template>
+                    <span class="text-gray-400 text-sm font-thin">Si es que es un chat con un miembro, no se aplicará.</span>
+                </div>
+                <div class="w-full h-[1px] bg-gray-600 my-2"></div>
+                <div class="mt-2 text-gray-100">
+                    <span class="font-semibold">Agregar usuario(s)</span>
+                    <div class="text-gray-300 mt-2">
+                        <label for="username">Nombre de usuario</label>
+                        <div class="bg-gray-900 border border-gray-600 w-full px-2
+                            flex items-center justify-between">
+                            <input (input)="error = ''" type="text" name="username" placeholder="Pepito123" #AddUser
+                                class="w-full bg-gray-900 h-10 px-2 rounded-lg
+                                outline-none focus:shadow-outline">
+                            <icon (click)="addUser(AddUser.value)" class="w-6 h-6 cursor-pointer text-gray-400 hover:text-gray-100" name="plus_circle_outline"></icon>
+                        </div>
+                        <span *ngIf="error != ''" class="text-red-400">{{ error }}</span>
+                    </div>
+                </div>
+            </section>
+            <div class="w-[1px] self-center h-32 bg-gray-600 mx-4"></div>
+            <section class="w-1/2 ml-2">
+                <span class="text-gray-300">Usuarios</span>
+                <div class="w-full flex items-center justify-between border-y
+                border-y-gray-600 p-2" *ngFor="let user of chatInfo.users">
+                    <div class="flex items-center">
+                        <img class="w-8 h-8 aspect-square rounded-full" src="{{ apiURL }}/{{ user.profile_picture }}" alt>
+                        <span class="ml-2 text-gray-300 font-thin">{{ user.username }}</span>
+                    </div>
+                    <icon class="w-6 h-6 text-gray-400 hover:text-gray-100 cursor-pointer" name="minus_circle_outline"></icon>
+                </div>
+            </section>
+        </div>
+        <div class="flex items-center justify-center mt-4">
+            <div (click)="onCancel.emit()" class="py-2 px-4 mx-2 bg-red-400 text-gray-200
+                flex items-center justify-center rounded-md cursor-pointer w-32
+                hover:bg-red-500 transition-all">
+                <span>Cancelar</span>
+            </div>
+            <div (click)="createChat()" class="py-2 px-4 mx-2 bg-blue-400 text-gray-200
+                flex items-center justify-center rounded-md cursor-pointer w-32
+                hover:bg-blue-500 transition-all">
+                <span>Crear</span>
+            </div>
+        </div>
+    </section>
+</main>
