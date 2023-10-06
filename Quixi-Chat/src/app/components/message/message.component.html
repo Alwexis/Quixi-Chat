@@ -1,0 +1,41 @@
+<main *ngIf="!loading" class="my-1 flex items-center justify-center">
+    <section *ngIf="message.author == 'System'; else NotSystemMsg">
+        <span class="bg-gray-600 bg-opacity-50 rounded-md text-gray-200 px-6 py-1">{{ message.content }}</span>
+    </section>
+    <ng-template #NotSystemMsg>
+        <section class="flex flex-col w-full mx-2">
+            <div class="flex items-start min-w-[30%] max-w-[80%] px-2 py-1 rounded-lg
+                {{ message.author.username == user.username ? 'self-end bg-emerald-800' :
+                'self-start bg-gray-600'}}" *ngIf="chat.users.length > 2; else SingleChat">
+                <img *ngIf="message.author.username != user.username"
+                    src="{{ apiURL }}/{{ message.author.profile_picture }}" alt=""
+                    class="w-8 h-8 aspect-square rounded-full mr-2">
+                <section class="flex flex-col w-full">
+                    <span *ngIf="message.author.username != user.username"
+                        class="text-sm self-start text-gray-100 font-semibold">
+                        {{ message.author.username }}
+                    </span>
+                    <p class="text-sm self-start text-gray-200">{{ message.content }}</p>
+                    <!-- Attachments -->
+                    <div class="max-h-48 max-w-[12rem] my-1" *ngIf="message.attachments.length > 0">
+                        <img class="max-h-full max-w-full w-fit h-fit rounded-md"
+                            *ngFor="let attachment of message.fixedAttachments"
+                            src="{{ attachment }}" alt="">
+                    </div>
+                    <span class="text-xs self-end text-gray-400">{{ message.date }}</span>
+                </section>
+            </div>
+            <ng-template #SingleChat>
+                <div class="flex flex-col min-w-[30%] max-w-[80%] px-2 py-1 rounded-lg
+                {{ message.author.username == user.username ? 'bg-emerald-800 self-end' :
+                'bg-gray-600 self-start' }}">
+                    <p class="text-sm self-start text-gray-200">{{ message.content }}</p>
+                    <div class="max-h-48 max-w-[12rem] my-1" *ngIf="message.attachments.length > 0">
+                        <img class="max-h-full max-w-full w-fit h-fit rounded-md" *ngFor="let attachment of message.attachments" src="{{ apiURL }}/{{ attachment.file }}" alt="">
+                    </div>
+                    <span class="text-xs self-end text-gray-400">{{ message.date }}</span>
+                </div>
+            </ng-template>
+        </section>
+    </ng-template>
+</main>

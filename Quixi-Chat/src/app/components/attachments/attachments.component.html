@@ -1,0 +1,13 @@
+<main class="bg-gray-800 h-full py-2 px-2 border-b border-b-gray-600 flex
+    items-center overflow-y-hidden overflow-x-auto
+    scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-600">
+    <section *ngFor="let image of attachments; index as x" class="w-16 h-16 relative flex
+        items-center justify-center group/img mx-2">
+        <img src="{{ image }}" alt=""
+            class="h-16 w-16 max-h-16 max-w-[4rem] aspect-square rounded-md">
+        <div class="absolute hidden group-hover/img:flex items-center justify-center
+            w-full h-full text-gray-200 bg-black bg-opacity-50 rounded-md">
+            <icon (click)="onAttachmentRemoved.emit(x)" class="w-8 h-8 cursor-pointer" name="x_mark_outline"></icon>
+        </div>
+    </section>
+</main>

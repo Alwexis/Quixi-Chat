@@ -14,7 +14,6 @@
                         <input [(ngModel)]="chatInfo.name" type="text" name="name" placeholder="Chat con ..."
                             class="w-full h-10 px-3 rounded-lg bg-gray-900 border border-gray-600
                             outline-none focus:shadow-outline">
-                    <span class="text-gray-400 text-sm font-thin">Si es que es un chat con un miembro, no se aplicará.</span>
                 </div>
                 <div class="max-w-full min-w-full mt-2 text-gray-100">
                     <input (input)="changeImage($event)" #ChatImg class="hidden" name="pfp" type="file" accept="image/jpeg, image/png, image/jpg">
@@ -30,8 +29,8 @@
                             <span (click)="clearImage()" class="ml-2 rounded-md text-red-400 px-4 py-2 hover:text-gray-50 hover:bg-red-400 transition-all cursor-pointer">Eliminar foto</span>
                         </div>
                     </ng-template>
-                    <span class="text-gray-400 text-sm font-thin">Si es que es un chat con un miembro, no se aplicará.</span>
                 </div>
+                <span class="text-gray-400 text-sm font-thin">Si <span class="text-red-400">NO</span> es un grupo, esto no se aplicará.</span>
                 <div class="w-full h-[1px] bg-gray-600 my-2"></div>
                 <div class="mt-2 text-gray-100">
                     <span class="font-semibold">Agregar usuario(s)</span>
@@ -57,7 +56,7 @@
                         <img class="w-8 h-8 aspect-square rounded-full" src="{{ apiURL }}/{{ user.profile_picture }}" alt>
                         <span class="ml-2 text-gray-300 font-thin">{{ user.username }}</span>
                     </div>
-                    <icon class="w-6 h-6 text-gray-400 hover:text-gray-100 cursor-pointer" name="minus_circle_outline"></icon>
+                    <icon (click)="removeUser(user)" class="w-6 h-6 text-gray-400 hover:text-gray-100 cursor-pointer" name="minus_circle_outline"></icon>
                 </div>
             </section>
         </div>

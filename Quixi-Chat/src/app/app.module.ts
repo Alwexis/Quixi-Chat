@@ -15,8 +15,10 @@ import { AlertComponent } from './components/alert/alert.component';
 import { FormsModule } from '@angular/forms';
 import { CreateChatComponent } from './components/create-chat/create-chat.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { MessageComponent } from './components/message/message.component';
+import { AttachmentsComponent } from './components/attachments/attachments.component';
 
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: { reconnection: true, extraHeaders: { 'Authorization': 'owo' } } };
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: { reconnection: true, extraHeaders: { 'authorization': '' } } };
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { reconn
     IconsComponent,
     AlertComponent,
     CreateChatComponent,
-    ChatComponent
+    ChatComponent,
+    MessageComponent,
+    AttachmentsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,45 @@
 <main *ngIf="!loading"
     class="flex flex-col w-full h-screen bg-gray-900 select-none overflow-hidden
-        bg-circuit-board border-x border-x-gray-700">
-    <div id="profile" class="flex items-center justify-between px-2 py-2 bg-gray-800 shadow-md">
-        <img class="w-12 h-12 cursor-pointer aspect-square rounded-full" src="{{ apiURL }}/{{ chat.image }}" alt="">
-    </div>
+        bg-circuit-board border-x border-x-gray-700 animate-fade-right animate-duration-500">
+    <section id="profile"
+        class="flex items-center px-2 py-2 bg-gray-800 shadow-md">
+        <icon class="w-6 h-6 mr-4 text-gray-400 hover:text-gray-100 md:hidden" (click)="closeChat()" name="arrow_small_left_outline"></icon>
+        <img class="w-12 h-12 cursor-pointer aspect-square rounded-full"
+            src="{{ apiURL }}/{{ chat.image }}" alt>
+        <div class="flex items-center justify-between ml-4 w-full">
+            <span class="text-base font-semibold text-gray-200">{{ chat.name }}</span>
+            <icon class="w-6 h-6 text-gray-400 hover:text-red-400 transition-all
+                cursor-pointer mx-2" name="archive_box_x_mark_outline"></icon>
+        </div>
+    </section>
+    <section id="messages"
+        class="h-full w-full flex flex-col justify-between overflow-hidden">
+        <div class="flex flex-col overflow-x-hidden overflow-y-auto pt-2 h-full
+            scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-600">
+            <message *ngFor="let message of messages" [chat]="chat"
+                [message]="message"></message>
+        </div>
+        <div class="flex flex-col">
+            <attachments (onAttachmentRemoved)="removeAttachment($event)" [attachments]="images"
+                *ngIf="images.length > 0" class="overflow-x-auto overflow-y-hidden w-full h-24"></attachments>
+            <div class="text-gray-200 bg-gray-800 flex items-center justify-between px-4
+                py-3">
+                <icon class="w-6 h-6 {{ images.length > 0 ? 'text-gray-100' :
+                'text-gray-400 hover:text-gray-100' }} transition-all
+                    cursor-pointer" name="photo_outline" (click)="AttachmentInput.click()"></icon>
+
+                <input multiple (input)="changeImage($event)" #AttachmentInput class="hidden" name="pfp" type="file" accept="image/jpeg, image/png, image/jpg, image/gif">
+
+                <input
+                    class="w-full h-10 px-4 mx-4 text-gray-200 bg-gray-800 rounded-full
+                outline-none border border-gray-600"
+                    placeholder="Escribe un mensaje..."
+                    type="text" #Message name="message" [(ngModel)]="message">
+                <icon
+                    class="w-6 h-6 cursor-pointer {{ Message.value == '' ? 'text-gray-400' :
+                'text-green-400' }}" name="paper_airplane_outline"
+                    (click)="sendMessage()"></icon>
+            </div>
+        </div>
+    </section>
 </main>

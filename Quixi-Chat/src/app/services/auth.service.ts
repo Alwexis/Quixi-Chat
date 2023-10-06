@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment';
 })
 export class AuthService {
   private _apiURL: string = environment.apiURL;
+  private _user: any;
   constructor(private _http: HttpClient, private _cookie: CookieService) { }
 
   login(credentials: any) {
@@ -41,8 +42,16 @@ export class AuthService {
     return this._cookie.get('token') ? true : false;
   }
 
+  async getSessionData() {
+    if (this._user) {
+      return this._user;
+    }
+    this._user = await this.getUserData();
+    return this._user;
+  }
+
   async getUserData(user: string = '') {
-    return new Promise((resolve, reject) => {
+    return await new Promise((resolve, reject) => {
       const url = user != '' ? `${this._apiURL}/auth/user/${user}` : `${this._apiURL}/auth/user`;
       this._http.get(url, {
         headers: {
@@ -66,5 +75,9 @@ export class AuthService {
     } catch (error) {
       return false;
     }
+  }
+
+  async getToken() {
+    return this._cookie.get('token');
   }
 }

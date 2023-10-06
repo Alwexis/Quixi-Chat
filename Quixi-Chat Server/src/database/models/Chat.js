@@ -8,7 +8,7 @@ const ChatSchema = new Schema({
     name: String,
     users: Array,
     image: String,
-    last_message: { type: String, default: 'Chat creado' },
+    last_message: { type: Object, default: { author: 'System', content: 'Chat Creado' } },
     readed: { type: Boolean, default: false },
 }, { timestamps: true });
 

@@ -43,6 +43,11 @@ export class CreateChatComponent {
     this.error = 'El usuario no existe';
   }
 
+  removeUser(user: any) {
+    const index = this.chatInfo.users.indexOf(user);
+    this.chatInfo.users.splice(index, 1);
+  }
+
   async createChat() {
     if (this.chatInfo.users.length == 0) return;
     if (this.chatInfo.users.length > 1 && this.chatInfo.name == '') return;
